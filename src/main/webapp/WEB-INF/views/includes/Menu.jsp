@@ -15,7 +15,7 @@
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="${urlRoot}peliculas/">Peliculas</a></li>
-			<li class="nav-item"><a class="nav-link" href="${urlRoot}usuarios/">Usuarios</a></li>
+			
 			<li class="nav-item"><a class="nav-link" href="${urlRoot}registro">Registrar</a></li>
 			<li class="nav-item"><a class="nav-link" href="${urlRoot}entrar">Acceder</a></li>
 			<li class="nav-item"><a class="nav-link" href="${urlRoot}admin/salir">Salir</a></li>
