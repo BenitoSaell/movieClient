@@ -12,34 +12,52 @@
 <spring:url value="/" var="urlRoot" />
 <link href="webjars/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet">
+<link href="/css/home.css" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="includes/Menu.jsp"></jsp:include>
 	<div class="container theme-showcase" role="main">
-		<h1>Bienvenido</h1>
-		<div class="container marketing">
+		<img alt="Portada" src="${urlRoot}images/portada.jpeg" width="100%">
+		<h1 class="col-12 text-center">Bienvenido</h1>
 
-			<div class="row">
 
-				<c:forEach items="${movies}" var="movie">
-					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-						<img class="img-rounded" src="${urlPublic}/images/${movie.poster}"
-							alt="Generic placeholder image" width="150" height="200">
-						<h4>${movie.title}</h4>
-						<p>
-							${movie.synopsis}
-						</p>
-						<p>
+		<div class="row">
+			<h3 class="col-12">Lista de peliculas</h3>
+			<br />
+			<c:forEach items="${movies}" var="movie">
+				<div class="col-12 col-md-6 col-lg-6 item">
+					<div class="border">
+						<div class="xol-12">
+							<img class="img-rounded" src="${urlRoot}images/sinImagen.png"
+								alt="${movie.title}" width="100%">
+						</div>
+
+
+						<div class="col-12 text-left">
+							<h3 class="col-12">${movie.title}</h3>
+						</div>
+						<div class="col-12 text-right">
+							<h4 class="col-12">
+								<fmt:formatDate value="${movie.releaseDate}"
+									pattern="dd-MM-yyyy" />
+							</h4>
+						</div>
+
+
+						<p class="col-12">${movie.synopsis}</p>
+						<div class="col-12 text-center">
 							<a class="btn btn-lg btn-primary" href="pelicula/${movie.id }"
 								role="button">Ver&raquo;</a>
-						</p>
+						</div>
 					</div>
-				</c:forEach>
+				</div>
 
-			</div>
+			</c:forEach>
+
+
 		</div>
 		<script src="${urlRoot}webjars/jquery/3.3.1/jquery.min.js"></script>
-        <script src="${urlRoot}webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<script src="${urlRoot}webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 	</div>
 </body>
