@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="includes/Menu.jsp"></jsp:include>
 	
-	<form class="form-signin" action="${urlRoot }login" method="post">
+	<form class="form-signin" action="${urlRoot}login" method="post">
 
 			
 			<h3 class="form-signin-heading text-center">Bienvenido</h3>

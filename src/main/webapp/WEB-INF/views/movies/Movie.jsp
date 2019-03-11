@@ -17,14 +17,17 @@
 <link href="/css/movie.css" rel="stylesheet">
 </head>
 <body>
+	<!-- Inyeccion del menu -->
 	<jsp:include page="../includes/Menu.jsp"></jsp:include>
-
+	
+	<!-- Pagina de edicion y creacion de peliculas -->
 	<div class="container theme-showcase" role="main">
 
 		<div class="col-12 text-center">
 			<h3>Datos de la Pelicula</h3>
 		</div>
 		<br class="col-12"/>
+		<!-- Seccion de errores -->
 		<div class="col-12">
 			<spring:hasBindErrors name="movie">
 				<div class='alert alert-danger' role='alert'>
@@ -37,7 +40,7 @@
 				</div>
 			</spring:hasBindErrors>
 		</div>
-
+		<!-- Seccion de formulario para crear o editar pelicula -->
 		<div class="col-12">
 			<form:form action="${urlSave}" method="post"
 				enctype="multipart/form-data" modelAttribute="movie">
@@ -113,6 +116,7 @@
 
 
 	</div>
+	<!-- Inyeccion de dependencia de jquery y bootstrap -->
 	<script src="${urlRoot}webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script src="${urlRoot}webjars/bootstrap/4.1.3/css/bootstrap.min.js"></script>
 	<script>
