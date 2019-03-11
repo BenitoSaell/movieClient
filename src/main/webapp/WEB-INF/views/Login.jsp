@@ -21,9 +21,11 @@
 
 			
 			<h3 class="form-signin-heading text-center">Bienvenido</h3>
-			<span class="glyphicon glyphicon-user"></span>
-			<i style="font-size:24px" class="fa fa-user-circle""></i>
-			<img src="${urlRoot}images/login.png">
+			
+			<div class="col-12 text-center">
+				<img src="${urlRoot}images/login.png" width="200px">
+			</div>
+			
 			<br/>
 			<c:if test="${param.error != null}">
 				<h4 class="form-signin-heading" style="color: red">Acceso
