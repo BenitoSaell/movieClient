@@ -30,8 +30,8 @@
 					value="${movie.releaseDate}" pattern="dd-MM-yyyy" /></label> <br /> <br />
 			<div class="row">
 				<div class="col-12 col-md-6">
-					<img class="img-rounded" src="${urlRoot}images/portada.jpeg"
-						alt="${movie.title }" width="100%">
+					<img class="img-rounded" src="${urlPublic}/images/${movie.poster}"
+						alt="${movie.title }" width="100%"  onerror="this.src='${urlRoot }images/sinImagen.png'">
 				</div>
 				<div class="col-12 col-md-6">
 					<h3 class="col-12">SINOPSIS</h3>

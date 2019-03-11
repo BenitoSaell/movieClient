@@ -12,9 +12,9 @@ import org.apache.catalina.realm.GenericPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
+/*import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;*/
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,7 +32,7 @@ public class HomeController {
 	RestTemplate restTemplate = new RestTemplate();
 	
 	
-	private BCryptPasswordEncoder encoder;
+	//private BCryptPasswordEncoder encoder;
 
 	@GetMapping("/")
 	private String getHome(Model model) {
@@ -91,9 +91,9 @@ public class HomeController {
 		if (bindingResult.hasErrors()) {
             return "Registry";
         }
-		String temp = encoder.encode(user.getPassword());
+		//String temp = encoder.encode(user.getPassword());
 		System.out.println("UsuarioClient2: "+user);
-		user.setPassword(temp);
+		//user.setPassword(temp);
 		ResponseEntity<User> response
 		  = restTemplate.postForEntity("http://localhost:3000/api/usuarios/crear", user,User.class);
 		System.out.println("Respuesta  "+ response.getBody());

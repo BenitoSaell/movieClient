@@ -119,12 +119,6 @@
 	<!-- Inyeccion de dependencia de jquery y bootstrap -->
 	<script src="${urlRoot}webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script src="${urlRoot}webjars/bootstrap/4.1.3/css/bootstrap.min.js"></script>
-	<script>
-		$(function() {
-			$("#releaseDate").datepicker({
-				dateFormat : 'dd-mm-yy'
-			});
-		});
-	</script>
+	
 </body>
 </html>

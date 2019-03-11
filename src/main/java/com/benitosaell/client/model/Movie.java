@@ -7,7 +7,7 @@ public class Movie {
 	private int id;
 	private String title;
 	private String synopsis;
-	private String poster = "image.jpg";
+	private String poster = "sinImage.png";
 	private String review;
 	private Date releaseDate = new Date();
 	private List<Comment> comments;

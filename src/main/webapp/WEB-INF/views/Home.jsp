@@ -28,8 +28,8 @@
 				<div class="col-12 col-md-6 col-lg-6 item">
 					<div class="border">
 						<div class="xol-12">
-							<img class="img-rounded" src="${urlRoot}images/sinImagen.png"
-								alt="${movie.title}" width="100%">
+							<img class="img-rounded" src="${urlPublic}/images/${movie.poster}"
+								alt="${movie.title}" width="100%"  onerror="this.src='${urlRoot }images/sinImagen.png'">
 						</div>
 
 
