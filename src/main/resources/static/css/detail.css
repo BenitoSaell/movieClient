@@ -1,6 +1,5 @@
 @charset "ISO-8859-1";
-
-.show {
+button {
   padding: 12px;
   color: #FFF;
   background-color: #36B1DE;
@@ -13,25 +12,27 @@
   margin-bottom: 10px;
 }
 
-.item{
-	padding:1rem;
-}
-
-.border{
-	border-radius: 8px;
-	background-color: #fafafa;
-	box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.75);
+.item {
 	padding: 1rem;
 }
 
-h1,h2,h3,h4{
+.date {
+	font-size: 12px;
+	font-style: oblique;
+}
+
+h2 {
+	color: #36B1DE;
+	font-size: 26px;
+}
+
+h3, h4 {
 	color: #36B1DE;
 }
 
-h3{
-	font-size: 20px;
-}
-
-h4{
-	font-size: 16px;
+.border {
+	border-radius: 8px;
+	background-color: #fafafa;
+	box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.75);
+	padding: 1rem;
 }

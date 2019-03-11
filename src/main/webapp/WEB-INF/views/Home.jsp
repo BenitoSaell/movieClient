@@ -46,7 +46,7 @@
 
 						<p class="col-12">${movie.synopsis}</p>
 						<div class="col-12 text-center">
-							<a class="btn btn-lg btn-primary" href="pelicula/${movie.id }"
+							<a class="btn show" href="pelicula/${movie.id }"
 								role="button">Ver&raquo;</a>
 						</div>
 					</div>
