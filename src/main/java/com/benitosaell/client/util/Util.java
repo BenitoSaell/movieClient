@@ -16,7 +16,7 @@ public class Util {
 		String nameEnd = randomAlphaNumeric(8)+originalName;
 		// Obtenemos la ruta ABSOLUTA del directorio images
 		// apache-tomcat/webapps/cineapp/resources/images/
-		String rutaFinal = request.getServletContext().getRealPath("/resources/static/images/");
+		String rutaFinal = request.getServletContext().getRealPath("/resources/images/");
 		try {
 			// Formamos el nombre del archivo para guardarlo en el disco duro
 			System.out.println("Ruta: "+rutaFinal);

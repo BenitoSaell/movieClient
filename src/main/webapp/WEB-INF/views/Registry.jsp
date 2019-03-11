@@ -41,8 +41,8 @@
 				<fieldset>
 					<label for="name">Nombre:</label> 
 					<input type="text" id="name" name="name"> 
-					<label for="email">Correo:</label> 
-					<input type="email" id="email" name="email"> 
+					<label for="username">Usuario:</label> 
+					<input type="text" id="username" name="username"> 
 					<label for="password">Contrase&ntilde;a:</label> 
 					<input type="password" id="password" name="password">
 				</fieldset>

@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.benitosaell.client.model.Movie;
+import com.benitosaell.client.util.Util;
 
 @Controller
 @RequestMapping("/peliculas")
@@ -71,26 +72,34 @@ public class MovieController {
 	@PostMapping(value = "/guardar")
 	public String save(@ModelAttribute Movie movie, BindingResult result, RedirectAttributes attributes,
 			@RequestParam("fileImage") MultipartFile multiPart, HttpServletRequest request) {
-		/*
-		 * if (!multiPart.isEmpty()) { String nameImage = utileria.saveImage(multiPart,
-		 * request); System.out.println("name:   "+nameImage);
-		 * movie.setImage(nameImage); }
-		 * 
-		 * if (result.hasErrors()) { System.out.println("Existieron errores"); return
-		 * "movies/formMovie";
-		 * 
-		 * } System.out.println(movie); serviceDetails.insert(movie.getDetail());
-		 * serviceMovies.insert(movie);
-		 */
-		System.out.println("IdClient: " + movie);
+		try {
+			if (!multiPart.isEmpty()) {
+				String nameImage = Util.saveImage(multiPart, request);
+				System.out.println("name:   " + nameImage);
+				movie.setPoster(nameImage);
+			}
 
-		ResponseEntity<Movie> response = restTemplate.postForEntity("http://localhost:3000/api/peliculas/crear", movie,
-				Movie.class);
-		System.out.println("Respuesta  " + response.getBody());
-		movie = response.getBody();
+			if (result.hasErrors()) {
+				System.out.println("Existieron errores");
+				return "movies/Movie";
+			}
 
-		attributes.addFlashAttribute("message", "La pelicula fue insertada correctamente");
-		return "redirect:/peliculas/";
+			System.out.println("IdClient: " + movie);
+
+			ResponseEntity<Movie> response =
+			restTemplate.postForEntity("http://localhost:3000/api/peliculas/crear",
+			movie,Movie.class);
+			System.out.println("Respuesta " + response.getBody());
+			movie = response.getBody();
+
+			attributes.addFlashAttribute("message", "La pelicula fue insertada correctamente");
+			return "redirect:/peliculas/";
+			
+		}catch(Exception err) {
+			System.out.println("Error: "+err);
+			return "movies/Movie";
+		}
+		
 	}
 
 	@InitBinder

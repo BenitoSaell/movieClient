@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 public class User {
 	private int id;
 	private String name;
-	private String email;
+	private String username;
 	@Size(min=8, max=30)
 	private String password;
 	private int status = 1;
@@ -26,12 +26,14 @@ public class User {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -52,7 +54,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", status="
+		return "User [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + ", status="
 				+ status + "]";
 	}
 }
