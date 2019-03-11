@@ -52,8 +52,8 @@
 							<td><fmt:formatDate value="${movie.releaseDate}"
 									pattern="dd-MM-yyyy" /></td>
 							<td><a href="${urlEdit }/${movie.id}"
-								class="btn btn-success btn-sm" role="button" title="Editar">Editar</a> <a
-								href="${urlDelete }/${movie.id}"
+								class="btn btn-success btn-sm" role="button" title="Editar">Editar</a>
+								<a href="${urlDelete }/${movie.id}"
 								onclick='return confirm("¿Estas seguro?")'
 								class="btn btn-danger btn-sm" role="button" title="Eliminar">Eliminar</span></a></td>
 						</tr>

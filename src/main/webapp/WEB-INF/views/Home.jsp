@@ -24,12 +24,17 @@
 		<div class="row">
 			<h3 class="col-12">Lista de peliculas</h3>
 			<br />
+			<c:if test="${message != null }">
+				<div class='alert alert-success' role="alert">${message}</div>
+			</c:if>
 			<c:forEach items="${movies}" var="movie">
 				<div class="col-12 col-md-6 col-lg-6 item">
 					<div class="border">
 						<div class="xol-12">
-							<img class="img-rounded" src="${urlPublic}/images/${movie.poster}"
-								alt="${movie.title}" width="100%"  onerror="this.src='${urlRoot }images/sinImagen.png'">
+							<img class="img-rounded"
+								src="${urlPublic}/images/${movie.poster}" alt="${movie.title}"
+								width="100%"
+								onerror="this.src='${urlRoot }images/sinImagen.png'">
 						</div>
 
 
@@ -46,8 +51,7 @@
 
 						<p class="col-12">${movie.synopsis}</p>
 						<div class="col-12 text-center">
-							<a class="btn show" href="pelicula/${movie.id }"
-								role="button">Ver&raquo;</a>
+							<a class="btn show" href="pelicula/${movie.id }" role="button">Ver&raquo;</a>
 						</div>
 					</div>
 				</div>

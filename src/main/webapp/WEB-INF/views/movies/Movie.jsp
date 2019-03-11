@@ -45,18 +45,16 @@
 			<form:form action="${urlSave}" method="post"
 				enctype="multipart/form-data" modelAttribute="movie">
 				<div class="col-12">
-					<c:if test="movie.poster">
 						<div class="row">
 							<div class="col-sm-3">
 								<div class="form-group">
 									<img class="img-rounded"
 										src="${urlPublic}/images/${movie.poster}"
-										title="Imagen actual de la pelicula" width="150" height="200">
+										title="Imagen actual de la pelicula" width="300" height="200" onerror="this.src='${urlRoot }images/sinImagen.png'">
 								</div>
 
 							</div>
 						</div>
-					</c:if>
 				</div>
 				<div class="row">
 					<div class="col-12 col-md-6">

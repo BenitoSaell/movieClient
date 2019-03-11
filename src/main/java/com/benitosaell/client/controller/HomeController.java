@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.benitosaell.client.model.Comment;
 import com.benitosaell.client.model.Movie;
@@ -86,7 +87,7 @@ public class HomeController {
 	}
 
 	@PostMapping("/registrar")
-	private String insertUser(@Valid User user, BindingResult bindingResult) {
+	private String insertUser(@Valid User user, BindingResult bindingResult, RedirectAttributes attributes) {
 		System.out.println("UsuarioClient: "+user);
 		if (bindingResult.hasErrors()) {
             return "Registry";
@@ -97,6 +98,7 @@ public class HomeController {
 		ResponseEntity<User> response
 		  = restTemplate.postForEntity("http://localhost:3000/api/usuarios/crear", user,User.class);
 		System.out.println("Respuesta  "+ response.getBody());
+		attributes.addFlashAttribute("message", "Usuario registrado");
 		return "redirect:/";
 	}
 	
