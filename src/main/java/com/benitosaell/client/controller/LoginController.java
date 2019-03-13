@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import com.benitosaell.client.model.Comment;
+import com.benitosaell.client.model.User;
 
 @Controller
 @RequestMapping("/admin")
@@ -52,8 +53,8 @@ public class LoginController {
 	*/
 	@PostMapping(value = "/comentario")
 	public String insertComment(@ModelAttribute Comment comment, HttpSession sessionMain) {
-		
-		comment.setEmail(sessionMain.getAttribute("userAdmin").toString());
+		User user= (User) sessionMain.getAttribute("userAdmin");
+		comment.setEmail(user.getUsername());
 		comment.setDate(new Date());
 		
 		restTemplate.postForEntity("http://localhost:3000/api/comentarios/comentario", comment, Comment.class);
