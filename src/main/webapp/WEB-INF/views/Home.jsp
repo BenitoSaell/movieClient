@@ -30,24 +30,23 @@
 			<c:forEach items="${movies}" var="movie">
 				<div class="col-12 col-md-6 col-lg-6 item">
 					<div class="border">
-						<div class="xol-12">
+						<div class="col-12">
 							<img class="img-rounded"
 								src="${urlPublic}/images/${movie.poster}" alt="${movie.title}"
 								width="100%"
 								onerror="this.src='${urlRoot }images/sinImagen.png'">
 						</div>
-
-
-						<div class="col-12 text-left">
-							<h3 class="col-12">${movie.title}</h3>
+						<div class="row">
+							<div class="col-8 text-left">
+								<h3 class="col-12">${movie.title}</h3>
+							</div>
+							<div class="col-4 text-right">
+								<h4 class="col-12">
+									<fmt:formatDate value="${movie.releaseDate}"
+										pattern="dd-MM-yyyy" />
+								</h4>
+							</div>
 						</div>
-						<div class="col-12 text-right">
-							<h4 class="col-12">
-								<fmt:formatDate value="${movie.releaseDate}"
-									pattern="dd-MM-yyyy" />
-							</h4>
-						</div>
-
 
 						<p class="col-12">${movie.synopsis}</p>
 						<div class="col-12 text-center">

@@ -40,7 +40,5 @@
 				name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<button type="submit">Entrar</button>
 		</form>
-	
-
 </body>
 </html>
