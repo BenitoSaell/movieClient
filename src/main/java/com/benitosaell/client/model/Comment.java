@@ -7,7 +7,6 @@ public class Comment {
 	private String review;
 	private String email;
 	private Date date;
-	private String user;
 	private Movie movie;
 
 	public int getId() {
@@ -42,14 +41,6 @@ public class Comment {
 		this.date = date;
 	}
 
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
-
 	public Movie getMovie() {
 		return movie;
 	}
@@ -60,7 +51,6 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", review=" + review + ", email=" + email + ", date=" + date + ", user=" + user
-				+ "]";
+		return "Comment [id=" + id + ", review=" + review + ", email=" + email + ", date=" + date + "]";
 	}
 }
