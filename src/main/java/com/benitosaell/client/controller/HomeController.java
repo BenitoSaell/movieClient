@@ -95,16 +95,20 @@ public class HomeController {
 	 * 
 	 * @param user: usuario y contraseña para  autentificarse.
 	 * @param sessionMain: para restringir el acceso a la página cuando un usuario este autentificado.
+	 * @param attributes: Añadir mensajes.
 	 * @return: La dirección de la vista en una cadena o redirecciona a la vista de bienvenida. 
 	*/
 	@PostMapping("/login")
-	private String login2(@Valid UserLogin user, HttpSession sessionMain) {
+	private String login2(@Valid UserLogin user, HttpSession sessionMain,RedirectAttributes attributes) {
 		try {
-			System.out.println("Userlogin: " + user);
-			ResponseEntity<UserLogin> response = restTemplate.postForEntity("http://localhost:3000/api/usuarios/login",
-					user, UserLogin.class);
-			sessionMain.setAttribute("userAdmin", response.getBody().getUsername());
-			return "redirect:/admin/index";
+			ResponseEntity<User> response = restTemplate.postForEntity("http://localhost:3000/api/usuarios/login",
+					user, User.class);
+			if(response.getBody()!=null) {
+				sessionMain.setAttribute("userAdmin", response.getBody());
+				return "redirect:/admin/index";
+			}
+			attributes.addFlashAttribute("messageAdmin","Acceso denegado");
+			return "/Login";
 		} catch (Exception ex) {
 			return "/Login";
 		}
@@ -135,7 +139,6 @@ public class HomeController {
 
 	@PostMapping("/registrar")
 	private String insertUser(@Valid User user, BindingResult bindingResult, RedirectAttributes attributes) {
-		System.out.println("UsuarioClient: " + user);
 		if (bindingResult.hasErrors()) {
 			return "Registry";
 		}
