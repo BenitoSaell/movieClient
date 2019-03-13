@@ -1,20 +1,5 @@
 @charset "ISO-8859-1";
-button {
-  padding: 12px;
-  color: #FFF;
-  background-color: #36B1DE;
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  border-radius: 5px;
-  border: 1px solid #36B1DE;
-  border-width: 1px 1px 3px;
-  margin-bottom: 10px;
-}
-
-.item {
-	padding: 1rem;
-}
+@import "./global.css";
 
 .date {
 	font-size: 12px;
@@ -28,11 +13,4 @@ h2 {
 
 h3, h4 {
 	color: #36B1DE;
-}
-
-.border {
-	border-radius: 8px;
-	background-color: #fafafa;
-	box-shadow: 0px 2px 14px 0px rgba(0, 0, 0, 0.75);
-	padding: 1rem;
 }

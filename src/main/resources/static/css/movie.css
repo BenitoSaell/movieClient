@@ -1,18 +1,5 @@
 @charset "ISO-8859-1";
-
-button {
-  padding: 12px;
-  color: #FFF;
-  background-color: #36B1DE;
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  border-radius: 5px;
-
-  border: 1px solid #36B1DE;
-  border-width: 1px 1px 3px;
-  margin-bottom: 10px;
-}
+@import "./global.css";
 
 input{
 	background-color: #fafafa;

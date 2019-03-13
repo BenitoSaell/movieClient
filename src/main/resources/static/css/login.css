@@ -1,5 +1,5 @@
 @charset "ISO-8859-1";
-
+@import "./global.css";
 body {
   font-family: 'Nunito', sans-serif;
   color: #384047;

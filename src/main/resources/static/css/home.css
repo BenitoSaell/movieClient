@@ -1,5 +1,5 @@
 @charset "ISO-8859-1";
-
+@import "./global.css";
 .show {
   padding: 12px;
   color: #FFF;
@@ -11,17 +11,6 @@
   border: 1px solid #36B1DE;
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
-}
-
-.item{
-	padding:1rem;
-}
-
-.border{
-	border-radius: 8px;
-	background-color: #fafafa;
-	box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.75);
-	padding: 1rem;
 }
 
 h1,h2,h3,h4{
