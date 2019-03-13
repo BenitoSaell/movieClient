@@ -24,9 +24,12 @@
 		<div class="row">
 			<h3 class="col-12">Lista de peliculas</h3>
 			<br />
-			<c:if test="${message != null }">
-				<div class='alert alert-success' role="alert">${message}</div>
-			</c:if>
+			<div class="col-12">
+				<c:if test="${message != null }">
+					<div class='alert alert-success' role="alert">${message}</div>
+				</c:if>
+			</div>
+
 			<c:forEach items="${movies}" var="movie">
 				<div class="col-12 col-md-6 col-lg-6 item">
 					<div class="border">

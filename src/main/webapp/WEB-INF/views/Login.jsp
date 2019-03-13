@@ -31,6 +31,9 @@
 				<h4 class="form-signin-heading" style="color: red">Acceso
 					denegado</h4>
 			</c:if>
+			<c:if test="${messageAdmin != null }">
+				<div class='alert alert-danger' role="alert">${messageAdmin}</div>
+			</c:if>
 			<label for="username" class="sr-only">Correo</label> <input
 				type="text" id="username" name="username" class="form-control"
 				placeholder="Correo" required autofocus> <label
