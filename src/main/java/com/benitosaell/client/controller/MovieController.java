@@ -108,9 +108,8 @@ public class MovieController {
 		if(sessionMain.getAttribute("userAdmin")==null) {
 			return "redirect:/";
 		}
-		System.out.println("IDMovie: "+idMovie);
 		restTemplate.delete("http://localhost:3000/api/peliculas/eliminar/"+idMovie);
-		restTemplate.delete("http://localhost:3000/api/comentarios/comentarios/"+idMovie);
+		
 		attribute.addFlashAttribute("message", "La pelicula fue eliminada");
 		return "redirect:/peliculas/";
 	}
