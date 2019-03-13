@@ -31,15 +31,16 @@
 			<div class="row">
 				<div class="col-12 col-md-6">
 					<img class="img-rounded" src="${urlPublic}/images/${movie.poster}"
-						alt="${movie.title }" width="100%"  onerror="this.src='${urlRoot }images/sinImagen.png'">
+						alt="${movie.title }" width="100%"
+						onerror="this.src='${urlRoot }images/sinImagen.png'">
 				</div>
 				<div class="col-12 col-md-6">
 					<h3 class="col-12">SINOPSIS</h3>
 					<p class="col-12">${movie.synopsis}</p>
 				</div>
 			</div>
-			
-			<hr class="col-12" style="margin-top:1rem">
+
+			<hr class="col-12" style="margin-top: 1rem">
 			<!-- Reseña -->
 			<div class="col-12">
 				<h3 class="}col-12">Rese&ntilde;a</h3>
@@ -71,19 +72,30 @@
 					</c:forEach>
 				</div>
 
+				<c:choose>
+					<c:when test="${userAdmin!=null}">
+						<div class="col-12 text-center item">
+							<form:form class="col-12 border" action="${urlSave}"
+								method="post" enctype="multipart/form-data"
+								modelAttribute="commentNew">
+								<div class="form-group">
+									<form:hidden path="movie.id" />
+									<form:textarea type="text" class="form-control col-12"
+										path="review" id="review" required="required"></form:textarea>
+								</div>
 
-				<div class="col-12 text-center item">
-					<form:form class="col-12 border" action="${urlSave}" method="post"
-						enctype="multipart/form-data" modelAttribute="commentNew">
-						<div class="form-group">
-							<form:hidden path="movie.id" />
-							<form:textarea type="text" class="form-control col-12"
-								path="review" id="review" required="required"></form:textarea>
+								<button type="submit">Agregar</button>
+							</form:form>
 						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="col-12 text-center item">
+							<label class="col-12">Se necesita ingresar para comentar.</label> 
+							<a class="btn" href="${urlRoot }entrar">Ingresar</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
 
-						<button type="submit">Agregar</button>
-					</form:form>
-				</div>
 			</div>
 		</div>
 		<script src="${urlRoot}webjars/jquery/3.3.1/jquery.min.js"></script>

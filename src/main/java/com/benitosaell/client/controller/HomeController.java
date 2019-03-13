@@ -27,13 +27,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.benitosaell.client.model.Comment;
 import com.benitosaell.client.model.Movie;
 import com.benitosaell.client.model.User;
+import com.benitosaell.client.model.UserLogin;
 
 @Controller
 public class HomeController {
 	RestTemplate restTemplate = new RestTemplate();
-	
-	
-	//private BCryptPasswordEncoder encoder;
+
+	// private BCryptPasswordEncoder encoder;
 
 	@GetMapping("/")
 	private String getHome(Model model) {
@@ -88,25 +88,34 @@ public class HomeController {
 
 	@PostMapping("/registrar")
 	private String insertUser(@Valid User user, BindingResult bindingResult, RedirectAttributes attributes) {
-		System.out.println("UsuarioClient: "+user);
+		System.out.println("UsuarioClient: " + user);
 		if (bindingResult.hasErrors()) {
-            return "Registry";
-        }
-		//String temp = encoder.encode(user.getPassword());
-		System.out.println("UsuarioClient2: "+user);
-		//user.setPassword(temp);
-		ResponseEntity<User> response
-		  = restTemplate.postForEntity("http://localhost:3000/api/usuarios/crear", user,User.class);
-		System.out.println("Respuesta  "+ response.getBody());
+			return "Registry";
+		}
+		// String temp = encoder.encode(user.getPassword());
+		System.out.println("UsuarioClient2: " + user);
+		// user.setPassword(temp);
+		ResponseEntity<User> response = restTemplate.postForEntity("http://localhost:3000/api/usuarios/crear", user,
+				User.class);
+		System.out.println("Respuesta  " + response.getBody());
 		attributes.addFlashAttribute("message", "Usuario registrado");
 		return "redirect:/";
 	}
-	
-	/*@PostMapping("/login")
-	private String login2(Model model, Authentication auth) {
-		aut
-		return "redirect:/admin/index";
-	}*/
-	
-	
+
+	@PostMapping("/login")
+	private String login2(@Valid UserLogin user, HttpSession sessionMain, Principal principal) {
+		try {
+			System.out.println("Userlogin: " + user);
+			ResponseEntity<UserLogin> response = restTemplate.postForEntity("http://localhost:3000/api/usuarios/login",
+					user, UserLogin.class);
+			System.out.println("Respuesta  " + response.getBody());
+			sessionMain.setAttribute("userAdmin", response.getBody().getUsername());
+			return "redirect:/admin/index";
+
+		} catch (Exception ex) {
+			return "/Login";
+		}
+
+	}
+
 }

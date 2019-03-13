@@ -18,7 +18,7 @@
 		<div>
 			<h3>Administración del Sistema</h3>
 			<p>
-				Bienvenido(a) ${userAdmin.name}
+				Bienvenido(a) ${userAdmin}
 			</p>
 		</div>
 	</div>

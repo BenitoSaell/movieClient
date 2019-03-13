@@ -3,6 +3,7 @@ package com.benitosaell.client.controller;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,21 +27,22 @@ public class LoginController {
 		//for(GrantedAuthority rol: authentication.getAuthorities()) {
 			//System.out.println("Rol: "+ rol.getAuthority());
 		//}
-		return "admin";
+		return "Admin";
 	}
 	
-	@GetMapping(value = "/logout")
-	public String logout(HttpServletRequest request) {
+	@GetMapping(value = "/salir")
+	public String logout(HttpSession sessionMain,HttpServletRequest request) {
 		//SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 		//logoutHandler.logout(request, null, null);
+		sessionMain.setAttribute("userAdmin", null);
 		return "redirect:/entrar";
 	}
 	
 	@PostMapping(value = "/comentario")
-	public String insertComment(@ModelAttribute Comment comment) {
+	public String insertComment(@ModelAttribute Comment comment, HttpSession sessionMain) {
 		//SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
 		//logoutHandler.logout(request, null, null);
-		comment.setEmail("benito-misael@outlook.com");
+		comment.setEmail(sessionMain.getAttribute("userAdmin").toString());
 		comment.setDate(new Date());
 		System.out.println("Nuevo comentario: " + comment);
 		
