@@ -6,7 +6,7 @@ public class User {
 	private int id;
 	private String name;
 	private String username;
-	@Size(min=8, max=30)
+	@Size(min=6, max=30)
 	private String password;
 	private int status = 1;
 
@@ -25,8 +25,6 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
 
 	public String getUsername() {
 		return username;
