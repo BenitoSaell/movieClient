@@ -36,7 +36,7 @@
 			</c:if>
 			<label for="username" class="sr-only">Correo</label> <input
 				type="text" id="username" name="username" class="form-control"
-				placeholder="Correo" required autofocus> <label
+				placeholder="Usuario" required autofocus> <label
 				for="password" class="sr-only">Contraseña</label> <input
 				type="password" id="password" name="password" class="form-control"
 				placeholder="Contrase&ntilde;a" required> <input type="hidden"
