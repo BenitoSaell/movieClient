@@ -107,8 +107,8 @@ public class HomeController {
 			UserLogin userLogin = user;
 			//userLogin.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 			System.out.println("Ingresar:  "+user+"  "+userLogin);
-			ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:3000/api/publico/ingresar",
-					userLogin, String.class);
+			ResponseEntity<ResponseEntity> response = restTemplate.postForEntity("http://localhost:3000/login",
+					userLogin, ResponseEntity.class);
 			System.out.println("Response: "+user+"  :  "+response);
 			/*if(response.getBody()!=null) {
 				sessionMain.setAttribute("userAdmin", response.getBody());
