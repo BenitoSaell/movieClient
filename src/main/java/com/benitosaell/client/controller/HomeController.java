@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,7 +21,8 @@ import com.benitosaell.client.model.Comment;
 import com.benitosaell.client.model.Movie;
 import com.benitosaell.client.model.User;
 import com.benitosaell.client.model.UserLogin;
-
+import static com.benitosaell.client.constant.Urls.URL_PUBLIC;
+import static com.benitosaell.client.constant.Urls.URL_LOGIN;
 @Controller
 public class HomeController {
 	RestTemplate restTemplate = new RestTemplate();
@@ -34,7 +37,7 @@ public class HomeController {
 	@GetMapping("/")
 	private String getHome(Model model) {
 		List<Movie> movies = new LinkedList<>();
-		ResponseEntity<Movie[]> response = restTemplate.getForEntity("http://localhost:3000/api/publico/peliculas",
+		ResponseEntity<Movie[]> response = restTemplate.getForEntity(URL_PUBLIC+"/peliculas",
 				Movie[].class);
 		for (Movie movie : response.getBody()) {
 			movies.add(movie);
@@ -54,13 +57,13 @@ public class HomeController {
 	@GetMapping("/pelicula/{id}")
 	private String getDetail(@PathVariable("id") int id, Model model) {
 		Movie movie = new Movie();
-		ResponseEntity<Movie> response = restTemplate.getForEntity("http://localhost:3000/api/publico/ver/" + id,
+		ResponseEntity<Movie> response = restTemplate.getForEntity(URL_PUBLIC+"/ver/" + id,
 				Movie.class);
 		System.out.println("Respuesta  " + response.getBody());
 		movie = response.getBody();
 
 		ResponseEntity<Comment[]> commetsResponse = restTemplate
-				.getForEntity("http://localhost:3000/api/publico/comentarios/" + id, Comment[].class);
+				.getForEntity(URL_PUBLIC+"/comentarios/" + id, Comment[].class);
 		List<Comment> comments = new LinkedList<>();
 
 		for (Comment comment : commetsResponse.getBody()) {
@@ -103,20 +106,23 @@ public class HomeController {
 	@PostMapping("/login")
 	private String login2(@Valid UserLogin user, HttpSession sessionMain,RedirectAttributes attributes) {
 		try {
-			
 			UserLogin userLogin = user;
-			//userLogin.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-			System.out.println("Ingresar:  "+user+"  "+userLogin);
-			ResponseEntity<ResponseEntity> response = restTemplate.postForEntity("http://localhost:3000/login",
+			ResponseEntity<ResponseEntity> response = restTemplate.postForEntity(URL_LOGIN,
 					userLogin, ResponseEntity.class);
-			System.out.println("Response: "+user+"  :  "+response);
-			/*if(response.getBody()!=null) {
-				sessionMain.setAttribute("userAdmin", response.getBody());
+			HttpHeaders header = response.getHeaders();
+			if(header.get("Authorization")!=null) {
+				User usera = new User();
+				usera.setName("Benito");
+				usera.setUsername("admin");
+				usera.setPassword("");
+				sessionMain.setAttribute("userToken", header.get("Authorization").get(0));
+				sessionMain.setAttribute("userAdmin", usera);
 				return "redirect:/admin/index";
 			}
-			attributes.addFlashAttribute("messageAdmin","Acceso denegado");*/
+			attributes.addFlashAttribute("messageAdmin","Acceso denegado");
 			return "/Login";
 		} catch (Exception ex) {
+			attributes.addFlashAttribute("messageAdmin","Acceso denegado");
 			System.out.println("Error: " +ex);
 			return "/Login";
 		}
@@ -151,7 +157,7 @@ public class HomeController {
 			return "Registry";
 		}
 		System.out.println("Registrar" + user);
-		restTemplate.postForEntity("http://localhost:3000/api/publico/crear", user,
+		restTemplate.postForEntity(URL_PUBLIC+"/crear", user,
 				User.class);
 		attributes.addFlashAttribute("message", "Usuario registrado");
 		return "redirect:/";

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.benitosaell.client.model.Movie;
 import com.benitosaell.client.util.Util;
-
+import static com.benitosaell.client.constant.Urls.URL_MOVIES;
 @Controller
 @RequestMapping("/peliculas")
 public class MovieController {
@@ -46,9 +49,15 @@ public class MovieController {
 		if(sessionMain.getAttribute("userAdmin")==null) {
 			return "redirect:/";
 		}
+		String token = (String) sessionMain.getAttribute("userToken");
+		HttpHeaders headers = new HttpHeaders();
+		
+		headers.add("Authorization",token);
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
+		ResponseEntity<Movie[]> response = restTemplate.exchange(URL_MOVIES+"/peliculas",
+				HttpMethod.GET,entity,Movie[].class);
+		System.out.println("Movies: "+ response);
 		List<Movie> movies = new LinkedList<>();
-		ResponseEntity<Movie[]> response = restTemplate.getForEntity("http://localhost:3000/api/peliculas/peliculas",
-				Movie[].class);
 		for (Movie movie : response.getBody()) {
 			movies.add(movie);
 		}
@@ -85,10 +94,15 @@ public class MovieController {
 		if(sessionMain.getAttribute("userAdmin")==null) {
 			return "redirect:/";
 		}
+		String token = (String) sessionMain.getAttribute("userToken");
+		HttpHeaders headers = new HttpHeaders();
+		
+		headers.add("Authorization",token);
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
 		Movie movie = new Movie();
-		ResponseEntity<Movie> response = restTemplate.getForEntity("http://localhost:3000/api/peliculas/ver/" + idMovie,
-				Movie.class);
-		System.out.println("Respuesta  " + response.getBody());
+		
+		ResponseEntity<Movie> response = restTemplate.exchange(URL_MOVIES+"/ver/" + idMovie,HttpMethod.GET
+				,entity,Movie.class);
 		movie = response.getBody();
 
 		model.addAttribute("movie", movie);
@@ -108,7 +122,12 @@ public class MovieController {
 		if(sessionMain.getAttribute("userAdmin")==null) {
 			return "redirect:/";
 		}
-		restTemplate.delete("http://localhost:3000/api/peliculas/eliminar/"+idMovie);
+		String token = (String) sessionMain.getAttribute("userToken");
+		HttpHeaders headers = new HttpHeaders();
+		
+		headers.add("Authorization",token);
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
+		restTemplate.delete(URL_MOVIES+"/eliminar/"+idMovie, entity);
 		
 		attribute.addFlashAttribute("message", "La pelicula fue eliminada");
 		return "redirect:/peliculas/";
@@ -126,21 +145,23 @@ public class MovieController {
 	*/
 	@PostMapping(value = "/guardar")
 	public String save(@ModelAttribute Movie movie, BindingResult result, RedirectAttributes attributes,
-			@RequestParam("fileImage") MultipartFile multiPart, HttpServletRequest request) {
+			@RequestParam("fileImage") MultipartFile multiPart, HttpServletRequest request,HttpSession sessionMain) {
 		try {
 			if (!multiPart.isEmpty()) {
 				String nameImage = Util.saveImage(multiPart, request);
 				System.out.println("name:   " + nameImage);
 				movie.setPoster(nameImage);
 			}
-
 			if (result.hasErrors()) {
 				return "movies/Movie";
 			}
-			ResponseEntity<Movie> response =
-			restTemplate.postForEntity("http://localhost:3000/api/peliculas/crear",
-			movie,Movie.class);
-			movie = response.getBody();
+			String token = (String) sessionMain.getAttribute("userToken");
+			HttpHeaders headers = new HttpHeaders();
+			
+			headers.add("Authorization",token);
+	        HttpEntity<Movie> entity = new HttpEntity<Movie>(movie,headers);
+			restTemplate.postForEntity(URL_MOVIES+"/crear",
+			entity,String.class);
 
 			attributes.addFlashAttribute("message", "La pelicula fue insertada correctamente");
 			return "redirect:/peliculas/";
