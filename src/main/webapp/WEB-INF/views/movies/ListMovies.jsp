@@ -2,6 +2,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+    pageEncoding="utf-8"%> 
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -54,7 +56,7 @@
 							<td><a href="${urlEdit }/${movie.id}"
 								class="btn btn-success btn-sm" role="button" title="Editar">Editar</a>
 								<a href="${urlDelete }/${movie.id}"
-								onclick='return confirm("¿Estas seguro?")'
+								onclick='return confirm("Â¿Estas seguro?")'
 								class="btn btn-danger btn-sm" role="button" title="Eliminar">Eliminar</span></a></td>
 						</tr>
 					</c:forEach>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
@@ -8,7 +8,8 @@
 
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Registro</title>
 <spring:url value="/resources" var="urlPublic" />
 <spring:url value="/" var="urlRoot" />
@@ -39,16 +40,16 @@
 				</spring:hasBindErrors>
 
 				<fieldset>
-					<label for="name">Nombre:</label> 
-					<input type="text" id="name" name="name"> 
-					<label for="username">Usuario:</label> 
-					<input type="text" id="username" name="username"> 
-					<label for="password">Contrase&ntilde;a:</label> 
-					<input type="password" id="password" name="password">
+					<label for="name">Nombre:</label> <input type="text" id="name"
+						name="name"> <label for="username">Usuario:</label> <input
+						type="text" id="username" name="username"> <label
+						for="password">Contrase&ntilde;a:</label> <input type="password"
+						id="password" name="password">
 				</fieldset>
-				<button type="submit">Registrarse</button>
+				<div class="text-center">
+					<button type="submit">Registrarse</button>
+				</div>
 			</form>
-
 		</div>
 		<script src="${urlroot}/webjars/jquery/3.3.1/jquery.min.js"></script>
 		<script src="${urlroot}webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>

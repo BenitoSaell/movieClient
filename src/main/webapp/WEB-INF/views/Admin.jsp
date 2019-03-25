@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+    pageEncoding="utf-8"%> 
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@
 	<jsp:include page="./includes/Menu.jsp"></jsp:include>
 	<div class="container theme-showcase" role="main">
 		<div class="col-12 item text-center">
-			<h3>Administración del Sistema</h3>
+			<h3>AdministraciÃ³n del Sistema</h3>
 			<p>Bienvenido(a): <b>${userAdmin.name}</b></p>
 		</div>
 	</div>

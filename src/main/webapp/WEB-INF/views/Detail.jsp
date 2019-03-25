@@ -2,6 +2,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+    pageEncoding="utf-8"%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +43,7 @@
 			</div>
 
 			<hr class="col-12" style="margin-top: 1rem">
-			<!-- Reseña -->
+			<!-- ReseÃ±a -->
 			<div class="col-12">
 				<h3 class="}col-12">Rese&ntilde;a</h3>
 				<p class="col-12">${movie.review }</p>

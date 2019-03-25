@@ -3,8 +3,12 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+    pageEncoding="utf-8"%> 
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Pelicula</title>
 <spring:url value="/" var="urlRoot" />
 <spring:url value="/resources" var="urlPublic" />
@@ -58,7 +62,7 @@
 					<div class="col-12 col-md-6">
 						<div class="col-12">
 							<div class="form-group">
-								<label for="title">Título:</label>
+								<label for="title">TÃ­tulo:</label>
 								<form:hidden path="id" />
 								<form:input type="text" class="form-control col-12" path="title"
 									id="title" required="required" />

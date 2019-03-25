@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" 
+    pageEncoding="utf-8"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Acceso</title>
 <spring:url value="/resources" var="urlPublic" />
 <spring:url value="/" var="urlRoot" />
@@ -37,7 +38,7 @@
 		<label for="username" class="sr-only">Correo</label> <input
 			type="text" id="username" name="username" class="form-control"
 			placeholder="Usuario" required autofocus> <label
-			for="password" class="sr-only">Contraseña</label> <input
+			for="password" class="sr-only">ContraseÃ±a</label> <input
 			type="password" id="password" name="password" class="form-control"
 			placeholder="Contrase&ntilde;a" required>
 		<div class="text-center">
