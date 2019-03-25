@@ -27,7 +27,6 @@ import static com.benitosaell.client.constant.Urls.URL_LOGIN;
 public class HomeController {
 	RestTemplate restTemplate = new RestTemplate();
 	
-	//BCryptPasswordEncoder bCryptPasswordEncoder;
 	/*
 	 * Carga la página principal.
 	 * 
@@ -111,12 +110,7 @@ public class HomeController {
 					userLogin, ResponseEntity.class);
 			HttpHeaders header = response.getHeaders();
 			if(header.get("Authorization")!=null) {
-				User usera = new User();
-				usera.setName("Benito");
-				usera.setUsername("admin");
-				usera.setPassword("");
 				sessionMain.setAttribute("userToken", header.get("Authorization").get(0));
-				sessionMain.setAttribute("userAdmin", usera);
 				return "redirect:/admin/index";
 			}
 			attributes.addFlashAttribute("messageAdmin","Acceso denegado");
