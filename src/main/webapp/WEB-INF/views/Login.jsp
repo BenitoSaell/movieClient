@@ -16,32 +16,34 @@
 </head>
 <body>
 	<jsp:include page="includes/Menu.jsp"></jsp:include>
-	
+
 	<form class="form-signin" action="${urlRoot}login" method="post">
 
-			
-			<h3 class="form-signin-heading text-center">Bienvenido</h3>
-			
-			<div class="col-12 text-center">
-				<img src="${urlRoot}images/login.png" width="200px">
-			</div>
-			
-			<br/>
-			<c:if test="${param.error != null}">
-				<h4 class="form-signin-heading" style="color: red">Acceso
-					denegado</h4>
-			</c:if>
-			<c:if test="${messageAdmin != null }">
-				<div class='alert alert-danger' role="alert">${messageAdmin}</div>
-			</c:if>
-			<label for="username" class="sr-only">Correo</label> <input
-				type="text" id="username" name="username" class="form-control"
-				placeholder="Usuario" required autofocus> <label
-				for="password" class="sr-only">Contraseña</label> <input
-				type="password" id="password" name="password" class="form-control"
-				placeholder="Contrase&ntilde;a" required> <input type="hidden"
-				name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+		<h3 class="form-signin-heading text-center">Bienvenido</h3>
+
+		<div class="col-12 text-center">
+			<img src="${urlRoot}images/login.png" width="200px">
+		</div>
+
+		<br />
+		<c:if test="${param.error != null}">
+			<h4 class="form-signin-heading" style="color: red">Acceso
+				denegado</h4>
+		</c:if>
+		<c:if test="${message!= null }">
+			<div class='alert alert-danger' role="alert">${message}</div>
+		</c:if>
+		<label for="username" class="sr-only">Correo</label> <input
+			type="text" id="username" name="username" class="form-control"
+			placeholder="Usuario" required autofocus> <label
+			for="password" class="sr-only">Contraseña</label> <input
+			type="password" id="password" name="password" class="form-control"
+			placeholder="Contrase&ntilde;a" required>
+		<div class="text-center">
 			<button type="submit">Entrar</button>
-		</form>
+		</div>
+
+	</form>
 </body>
 </html>
