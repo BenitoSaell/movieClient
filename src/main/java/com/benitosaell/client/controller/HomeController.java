@@ -113,11 +113,11 @@ public class HomeController {
 				sessionMain.setAttribute("userToken", header.get("Authorization").get(0));
 				return "redirect:/admin/index";
 			}
-			attributes.addFlashAttribute("messageAdmin","Acceso denegado");
+			attributes.addFlashAttribute("message","Acceso denegado");
 			return "/Login";
 		} catch (Exception ex) {
-			attributes.addFlashAttribute("messageAdmin","Acceso denegado");
 			System.out.println("Error: " +ex);
+			attributes.addFlashAttribute("message","Acceso denegado");
 			return "/Login";
 		}
 	}
@@ -150,11 +150,10 @@ public class HomeController {
 		if (bindingResult.hasErrors()) {
 			return "Registry";
 		}
-		System.out.println("Registrar" + user);
 		restTemplate.postForEntity(URL_PUBLIC+"/crear", user,
 				User.class);
 		attributes.addFlashAttribute("message", "Usuario registrado");
-		return "redirect:/";
+		return "redirect:/entrar";
 	}
 
 	
