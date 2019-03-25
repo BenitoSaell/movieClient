@@ -18,6 +18,7 @@
 		<div class="col-12 item text-center">
 			<h3>Administración del Sistema</h3>
 			<p>Bienvenido(a): <b>${userAdmin.name}</b></p>
+			<p>Usuario: <b>${userAdmin.username}</b></p>
 		</div>
 	</div>
 	<script src="${urlRoot}webjars/jquery/3.3.1/jquery.min.js"></script>
