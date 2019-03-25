@@ -98,6 +98,7 @@ public class MovieController {
 		HttpHeaders headers = new HttpHeaders();
 		
 		headers.add("Authorization",token);
+		headers.add("Content-Type", "application/json;charset=UTF-8");
         HttpEntity<String> entity = new HttpEntity<String>(headers);
 		Movie movie = new Movie();
 		
@@ -159,6 +160,8 @@ public class MovieController {
 			HttpHeaders headers = new HttpHeaders();
 			
 			headers.add("Authorization",token);
+			headers.add("Content-Type", "application/json;charset=UTF-8");
+			System.out.println("Headers-Client: "+headers+"   :  "+movie);
 	        HttpEntity<Movie> entity = new HttpEntity<Movie>(movie,headers);
 			restTemplate.postForEntity(URL_MOVIES+"/crear",
 			entity,String.class);

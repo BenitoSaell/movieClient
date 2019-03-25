@@ -23,7 +23,7 @@
 		<h3 class="form-signin-heading text-center">Bienvenido</h3>
 
 		<div class="col-12 text-center">
-			<img src="${urlRoot}images/login.png" width="200px">
+			<img src="${urlPublic}/images/login.png" width="200px">
 		</div>
 
 		<br />

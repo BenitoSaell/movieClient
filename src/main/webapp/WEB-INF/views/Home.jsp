@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="includes/Menu.jsp"></jsp:include>
 	<div class="container theme-showcase" role="main">
-		<img alt="Portada" src="${urlRoot}images/portada.jpeg" width="100%">
+		<img alt="Portada" src="${urlPublic}/images/portada.jpeg" width="100%">
 		<h1 class="col-12 text-center">Bienvenido</h1>
 
 
@@ -37,7 +37,7 @@
 							<img class="img-rounded"
 								src="${urlPublic}/images/${movie.poster}" alt="${movie.title}"
 								width="100%"
-								onerror="this.src='${urlRoot }images/sinImagen.png'">
+								onerror="this.src='${urlPublic}/images/sinImagen.png'">
 						</div>
 						<div class="row">
 							<div class="col-8 text-left">
