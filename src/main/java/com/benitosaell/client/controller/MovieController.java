@@ -127,7 +127,7 @@ public class MovieController {
 		
 		headers.add("Authorization",token);
         HttpEntity<String> entity = new HttpEntity<String>(headers);
-		restTemplate.delete(URL_MOVIES+"/eliminar/"+idMovie, entity);
+		ResponseEntity<String> response = restTemplate.exchange(URL_MOVIES+"/eliminar/"+idMovie,HttpMethod.GET,entity,String.class);
 		
 		attribute.addFlashAttribute("message", "La pelicula fue eliminada");
 		return "redirect:/peliculas/";
@@ -163,10 +163,11 @@ public class MovieController {
 			restTemplate.postForEntity(URL_MOVIES+"/crear",
 			entity,String.class);
 
-			attributes.addFlashAttribute("message", "La pelicula fue insertada correctamente");
+			attributes.addFlashAttribute("message", "La pelicula fue guardada correctamente");
 			return "redirect:/peliculas/";
 			
 		}catch(Exception err) {
+			System.out.println("Error");
 			return "movies/Movie";
 		}
 		
