@@ -24,7 +24,7 @@ public class LoginController {
 	RestTemplate restTemplate = new RestTemplate();
 	
 	/*
-	 * Envia la vista de bienvenida.
+	 * Envia la vista de bienvenida y obtiene la informacion del usuario activo.
 	 * @param sessionMain: Evitar el acceso si no esta autentificado..
 	 * @return : Dirección de vista de bienvenida.
 	*/

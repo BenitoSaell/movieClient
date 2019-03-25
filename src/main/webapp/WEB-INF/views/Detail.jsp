@@ -34,7 +34,7 @@
 				<div class="col-12 col-md-6">
 					<img class="img-rounded" src="${urlPublic}/images/${movie.poster}"
 						alt="${movie.title }" width="100%"
-						onerror="this.src='${urlRoot }images/sinImagen.png'">
+						onerror="this.src='${urlPublic }/images/sinImagen.png'">
 				</div>
 				<div class="col-12 col-md-6">
 					<h3 class="col-12">SINOPSIS</h3>
