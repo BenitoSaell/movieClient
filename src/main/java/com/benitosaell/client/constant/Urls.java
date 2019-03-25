@@ -6,5 +6,5 @@ public class Urls {
 	public static String URL_PUBLIC = URL_BASE_API + "/api/publico";
 	public static String URL_MOVIES = URL_BASE_API + "/api/peliculas";
 	public static String URL_USERS = URL_BASE_API + "/api/usuarios";
-
+	public static String URL_ADMIN= URL_BASE_API + "/api/admin";
 }
